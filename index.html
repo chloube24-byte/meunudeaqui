@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nudes haha</title>
+    <link rel="stylesheet" href="Index.css">
+</head><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nudes haha</title>
+    <link rel="stylesheet" href="index.css">
+    
+    <link rel="icon" type="image/png" href="https://64.media.tumblr.com/939348add7c1fe4d92ac3875a93b36d3/tumblr_pow4z3QaAQ1u1ycqw_250sq.jpg">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Ícone Redondo no Topo -->
+        <div class="icon-header">
+            <img src="https://i.ibb.co/fVzKCsqD/Whats-App-Image-2026-06-21-at-19-53-00.jpg" alt="Ícone" class="circle-icon">
+        </div>
+
+        <!-- Caixa do Contador -->
+        <div class="counter-box">
+            <p class="counter-title">Total de OTÁRIOS que cairam no bait</p>
+            <!-- O número começará em "..." até o JavaScript carregar o valor real -->
+            <span class="counter-number" id="visitor-counter">...</span>
+        </div>
+
+        <!-- Caixa de Descrição Central -->
+        <div class="description-box">
+            <p>VOCÊ FOI UM DOS OTÁRIOS MAS NÃO FIQUE TRISTE,        FIZ ESSE SITE ESPECIALMENTE PRA VOCÊ, MEU TEMPO PERDIDO CRIANDO ISSO FOI INTEIRAMENTE SEU <3 </p>
+        </div>
+
+        <!-- Imagem Final (vinda de link) -->
+        <div class="image-box">
+            <img src="https://i.ibb.co/mV5C1wg6/pau-enlatado.jpg" alt="Imagem Ilustrativa">
+        </div>
+
+        <!-- Anúncio Paródia Flutuante -->
+<div class="fake-ad-box">
+    <button class="close-ad" onclick="this.parentElement.style.display='none'">X</button>
+    <div class="ad-content">
+        <img src="https://i.pinimg.com/736x/15/71/69/1571695ffe6529acb7fcaf8cad95cda3.jpg" alt="Foto de perfil" class="ad-thumb">
+        <div class="ad-text">
+            <p class="ad-title">⚠️ 1 Nova Mensagem!</p>
+            <p class="ad-desc">Mulher gostosa atrás de você, se vira ai.</p>
+            <span class="ad-link">Clique Aqui</span>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <script>
+        function obterContador() {
+            // O CounterAPI usa o ID completo do slug para contas iniciais
+            const slug = "first-counter-4539"; 
+            const key = "nudsss";
+
+            // Faz a chamada direto no endpoint que está na sua tela (/v2/...)
+            fetch(`https://api.counterapi.dev/v2/${slug}/`)
+                .then(res => res.json())
+                .then(data => {
+                    // Se a API retornar os dados diretos da chave, nós somamos e exibimos
+                    // Nota: Para incrementar o valor real a cada visita:
+                    fetch(`https://api.counterapi.dev/v2/${slug}/key/${key}/increment`)
+                        .then(r => r.json())
+                        .then(resIncrement => {
+                            document.getElementById('visitor-counter').innerText = resIncrement.count.toLocaleString('pt-BR');
+                        });
+                })
+                .catch(err => {
+                    console.log("Erro na API, usando número simulado:", err);
+                    document.getElementById('visitor-counter').innerText = "1";
+                });
+        }
+
+        // Executa a função ao carregar a página
+        obterContador();
+    </script>
+</body>
+</html>
