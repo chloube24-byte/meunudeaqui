@@ -52,32 +52,25 @@
 </div>
     </div>
 
+   <!-- Script Ajustado com a Chave Correta -->
     <script>
         function obterContador() {
-            // O CounterAPI usa o ID completo do slug para contas iniciais
             const slug = "first-counter-4539"; 
-            const key = "nudsss";
+            const key = "nudsss"; 
 
-            // Faz a chamada direto no endpoint que está na sua tela (/v2/...)
-            fetch(`https://api.counterapi.dev/v2/${slug}/`)
-                .then(res => res.json())
+            fetch(`https://api.counterapi.dev/v2/${slug}/key/${key}/increment`)
+                .then(res => {
+                    if (!res.ok) throw new Error('Erro na resposta do servidor');
+                    return res.json();
+                })
                 .then(data => {
-                    // Se a API retornar os dados diretos da chave, nós somamos e exibimos
-                    // Nota: Para incrementar o valor real a cada visita:
-                    fetch(`https://api.counterapi.dev/v2/${slug}/key/${key}/increment`)
-                        .then(r => r.json())
-                        .then(resIncrement => {
-                            document.getElementById('visitor-counter').innerText = resIncrement.count.toLocaleString('pt-BR');
-                        });
+                    document.getElementById('visitor-counter').innerText = data.count.toLocaleString('pt-BR');
                 })
                 .catch(err => {
-                    console.log("Erro na API, usando número simulado:", err);
-                    document.getElementById('visitor-counter').innerText = "1";
+                    console.log("Erro na API, usando número padrão:", err);
+                    document.getElementById('visitor-counter').innerText = "0";
                 });
         }
 
-        // Executa a função ao carregar a página
         obterContador();
     </script>
-</body>
-</html>
